@@ -9,7 +9,7 @@ keywords = ["JSON","JSON Serialize", "DFS", "Error correcting JSON"]
 homepage = "https://github.com/AutomaticHourglass/dfsjson"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
 
 [build-system]
