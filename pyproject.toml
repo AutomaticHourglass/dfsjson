@@ -5,11 +5,7 @@ description = "A robust JSON encoder that fixes errors by utilizing DFS algorith
 authors = ["Unsal Gokdag <unsal.gokdag@gmail.com>"]
 readme = "README.md"
 packages = [{include = "dfsjson"}]
-
-[project]
 keywords = ["JSON","JSON Serialize", "DFS", "Error correcting JSON"]
-
-[project.urls]
 homepage = "https://github.com/AutomaticHourglass/dfsjson"
 
 [tool.poetry.dependencies]
