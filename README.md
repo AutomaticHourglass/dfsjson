@@ -1,9 +1,9 @@
-# Robust JSON
+# DFS JSON
 A Depth First Search powered JSON encoding library. For the remaining operations (dump, dumps), it uses standard python JSON library.
 
 # Installation
 ```
-pip install robustjson
+pip install dfsjson
 ```
 
 # Usage
@@ -19,7 +19,7 @@ example_json = """{
     ,
 }"""
 
-rj = RobustJson(max_depth = 100, max_diff = 10)
+rj = DFSJson(max_depth = 100, max_diff = 10)
 rj.loads(example_json)
 
 ```

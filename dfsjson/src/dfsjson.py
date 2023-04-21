@@ -2,7 +2,7 @@ import re
 import json
 
 
-class RobustJson:
+class DFSJson:
     def __init__(self, max_depth=100, max_diff=5):
         self.max_depth = max_depth
         self.max_diff = max_diff
@@ -39,7 +39,7 @@ class RobustJson:
             return e.pos
 
     @staticmethod
-    def mutate(string, index, replacement, flag=1):
+    def mutate(string, index, replacement, flag='insert'):
         if flag == 'insert':
             return string[:index] + replacement + string[index:]  # insert character
         elif flag == 'replace':
@@ -69,8 +69,8 @@ class RobustJson:
 
         for index in indexes:
             for m in self.replace_characters:
-                for i in ['insert', 'replace']:
-                    new_string = self.mutate(string, index, m, i)
+                for mutate_type in ['insert', 'replace']:
+                    new_string = self.mutate(string, index, m, mutate_type)
                     diff = self.level_diff(new_string)
                     if diff > self.max_diff:
                         continue

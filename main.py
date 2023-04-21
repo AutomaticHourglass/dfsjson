@@ -1,4 +1,4 @@
-from robustjson.src.robustjson import RobustJson
+from dfsjson.src.dfsjson import DFSJson
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -12,5 +12,5 @@ if __name__ == '__main__':
         ,
     }"""
 
-    rj = RobustJson(max_depth=100, max_diff=10)
+    rj = DFSJson(max_depth=100, max_diff=10)
     print(rj.loads(example_json))
