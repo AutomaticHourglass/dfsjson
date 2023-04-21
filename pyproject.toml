@@ -2,7 +2,7 @@
 name = "robustjson"
 version = "1.0.0"
 description = "A robust JSON encoder that fixes errors by DFS."
-authors = ["unsalgokdag <unsal.gokdag@gmail.com>"]
+authors = ["Unsal Gokdag <unsal.gokdag@gmail.com>"]
 readme = "README.md"
 packages = [{include = "robustjson"}]
 
