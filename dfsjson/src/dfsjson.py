@@ -1,5 +1,7 @@
-import re
+from __future__ import annotations
+
 import json
+import re
 
 
 class DFSJson:
@@ -7,7 +9,7 @@ class DFSJson:
         self.max_depth = max_depth
         self.max_diff = max_diff
         self.search_pattern = r'([\[\]\$\(\)\{\}\,\"\'])'
-        self.replace_characters = """}{"]\',+"""
+        self.replace_characters = """}{"]\',+ """
         return
 
     @staticmethod
@@ -26,7 +28,8 @@ class DFSJson:
         try:
             return json.loads(string)
         except json.JSONDecodeError:
-            string = string.replace("'", '"') # most basic error is using ' instead of "
+            # most basic error is using ' instead of "
+            string = string.replace("'", '"')
             fixed_json, fitness = self.dfs(string, self.max_depth)
             return json.loads(fixed_json)
 
@@ -41,16 +44,22 @@ class DFSJson:
     @staticmethod
     def mutate(string, index, replacement, flag='insert'):
         if flag == 'insert':
-            return string[:index] + replacement + string[index:]  # insert character
+            # insert character
+            return string[:index] + replacement + string[index:]
         elif flag == 'replace':
-            return string[:index] + replacement + string[index + 1:]  # replace character
+            # replace character
+            return string[:index] + replacement + string[index + 1:]
         else:
             return ValueError
 
     @staticmethod
     def level_diff(string):
-        diff1 = abs(len(re.findall(r'{', string)) - len(re.findall(r'}', string)))
-        diff2 = abs(len(re.findall(r'\[', string)) - len(re.findall(r'\]', string)))
+        diff1 = abs(
+            len(re.findall(r'{', string)) - len(re.findall(r'}', string)),
+        )
+        diff2 = abs(
+            len(re.findall(r'\[', string)) - len(re.findall(r'\]', string)),
+        )
         return max(diff1, diff2)
 
     def dfs(self, string, max_depth=10, cur_fitness=None, visited=None):
@@ -64,7 +73,10 @@ class DFSJson:
             return string, cur_fitness
         best_fitness = cur_fitness
         best_string = string
-        indexes = [cur_fitness] + [r.span()[0] for r in re.finditer(self.search_pattern, string)]
+        indexes = [cur_fitness] + [
+            r.span()[0]
+            for r in re.finditer(self.search_pattern, string)
+        ]
         diff = -self.max_diff
 
         for index in indexes:
@@ -84,6 +96,11 @@ class DFSJson:
                             break
 
         if best_fitness < int(1e8) and diff != 0:
-            return self.dfs(best_string, max_depth - 1, best_fitness, visited.copy().union({best_string}))
+            return self.dfs(
+                best_string,
+                max_depth - 1,
+                best_fitness,
+                visited.copy().union({best_string}),
+            )
         else:
             return best_string, best_fitness
