@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "robustjson"
+version = "1.0.0"
+description = "A robust JSON encoder that fixes errors by DFS."
+authors = ["unsalgokdag <unsal.gokdag@gmail.com>"]
+readme = "README.md"
+packages = [{include = "robustjson"}]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
