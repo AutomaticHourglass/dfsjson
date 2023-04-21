@@ -19,8 +19,8 @@ example_json = """{
     ,
 }"""
 
-rj = DFSJson(max_depth = 100, max_diff = 10)
-rj.loads(example_json)
+dj = DFSJson(max_depth = 100, max_diff = 10)
+dj.loads(example_json)
 
 ```
 

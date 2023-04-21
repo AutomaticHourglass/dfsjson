@@ -12,5 +12,5 @@ if __name__ == '__main__':
         ,
     }"""
 
-    rj = DFSJson(max_depth=100, max_diff=10)
-    print(rj.loads(example_json))
+    dj = DFSJson(max_depth=100, max_diff=10)
+    print(dj.loads(example_json))
