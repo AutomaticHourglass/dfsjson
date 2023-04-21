@@ -28,7 +28,6 @@ class RobustJson:
         except json.JSONDecodeError:
             string = string.replace("'", '"') # most basic error is using ' instead of "
             fixed_json, fitness = self.dfs(string, self.max_depth)
-            print(fixed_json)
             return json.loads(fixed_json)
 
     @staticmethod
@@ -41,10 +40,10 @@ class RobustJson:
 
     @staticmethod
     def mutate(string, index, replacement, flag=1):
-        if flag == 1:  # insert character
-            return string[:index] + replacement + string[index:]
-        elif flag == -1:  # replace character
-            return string[:index] + replacement + string[index + 1:]
+        if flag == 'insert':
+            return string[:index] + replacement + string[index:]  # insert character
+        elif flag == 'replace':
+            return string[:index] + replacement + string[index + 1:]  # replace character
         else:
             return ValueError
 
@@ -53,7 +52,6 @@ class RobustJson:
         diff1 = abs(len(re.findall(r'{', string)) - len(re.findall(r'}', string)))
         diff2 = abs(len(re.findall(r'\[', string)) - len(re.findall(r'\]', string)))
         return max(diff1, diff2)
-        # return diff1
 
     def dfs(self, string, max_depth=10, cur_fitness=None, visited=None):
         if visited is None:
@@ -68,9 +66,10 @@ class RobustJson:
         best_string = string
         indexes = [cur_fitness] + [r.span()[0] for r in re.finditer(self.search_pattern, string)]
         diff = -self.max_diff
+
         for index in indexes:
             for m in self.replace_characters:
-                for i in [-1, 1]:
+                for i in ['insert', 'replace']:
                     new_string = self.mutate(string, index, m, i)
                     diff = self.level_diff(new_string)
                     if diff > self.max_diff:
@@ -83,6 +82,7 @@ class RobustJson:
                         best_string = new_string
                         if best_fitness == int(1e8) and diff == 0:
                             break
+
         if best_fitness < int(1e8) and diff != 0:
             return self.dfs(best_string, max_depth - 1, best_fitness, visited.copy().union({best_string}))
         else:

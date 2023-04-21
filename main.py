@@ -13,4 +13,4 @@ if __name__ == '__main__':
     }"""
 
     rj = RobustJson(max_depth=100, max_diff=10)
-    rj.loads(example_json)
+    print(rj.loads(example_json))
