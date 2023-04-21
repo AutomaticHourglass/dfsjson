@@ -6,6 +6,9 @@ authors = ["Unsal Gokdag <unsal.gokdag@gmail.com>"]
 readme = "README.md"
 packages = [{include = "dfsjson"}]
 
+[project.urls]
+"Homepage" = "https://github.com/AutomaticHourglass/dfsjson"
+
 [tool.poetry.dependencies]
 python = "^3.6"
 
