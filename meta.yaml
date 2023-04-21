@@ -1,0 +1,22 @@
+package:
+  name: "dfsjson"
+  version: "1.0.8"
+
+source:
+  git_url: https://github.com/AutomaticHourglass/dfsjson
+
+requirements:
+  host:
+    - python
+    - setuptools
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: https://github.com/AutomaticHourglass/dfsjson
+  license: GNU
+  license_familY: GNU
+  license_file: LICENSE
+  summary: "A robust JSON encoder that fixes errors by utilizing DFS algorithm."
