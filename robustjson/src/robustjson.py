@@ -25,8 +25,9 @@ class RobustJson:
     def loads(self, string):
         try:
             return json.loads(string)
-        except json.JSONDecodeError as e:
-            fixed_json, fitness = self.dfs(string.replace("'", '"'), self.max_depth)
+        except json.JSONDecodeError:
+            string = string.replace("'", '"') # most basic error is using ' instead of "
+            fixed_json, fitness = self.dfs(string, self.max_depth)
             print(fixed_json)
             return json.loads(fixed_json)
 
