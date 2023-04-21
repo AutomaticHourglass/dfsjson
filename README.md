@@ -1,5 +1,5 @@
 # DFS JSON
-A Depth First Search powered JSON encoding library. For the remaining operations (dump, dumps), it uses standard python JSON library.
+A Depth First Search powered JSON decoding library. For the remaining operations (dump, dumps), it uses standard python JSON library.
 
 # Installation
 ```
