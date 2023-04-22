@@ -156,7 +156,7 @@ class TestJSON(unittest.TestCase):
     def test_05(self):
         t = """
         {
-            "title": "The Hitchhikers Guide to the Galaxy,
+            "title": "The Hitchhiker's Guide to the Galaxy,
             "author": "Douglas Adams"
             "year": 1979,
             "genre": ["science-fiction", "comedy"]
@@ -174,7 +174,7 @@ class TestJSON(unittest.TestCase):
 
         correct = \
             {
-                'title': 'The Hitchhikers Guide to the Galaxy',
+                'title': "The Hitchhiker's Guide to the Galaxy",
                 'author': 'Douglas Adams',
                 'year': 1979,
                 'genre': ['science-fiction', 'comedy'],
