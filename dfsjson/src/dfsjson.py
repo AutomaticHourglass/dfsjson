@@ -5,11 +5,11 @@ import re
 
 
 class DFSJson:
-    def __init__(self, max_depth=100, max_diff=5):
+    def __init__(self, max_depth=200, max_diff=10):
         self.max_depth = max_depth
         self.max_diff = max_diff
         self.search_pattern = r'([\[\]\(\)\{\}\,\"\'])'
-        self.replace_characters = """\"\',+ }{()]"""
+        self.replace_characters = """\"\',+ }{()[]"""
         return
 
     @staticmethod
@@ -73,7 +73,7 @@ class DFSJson:
             return string, cur_fitness
         best_fitness = cur_fitness
         best_string = string
-        indexes = [cur_fitness] + [
+        indexes = [0, len(string), cur_fitness] + [
             r.span()[0]
             for r in re.finditer(self.search_pattern, string)
         ]

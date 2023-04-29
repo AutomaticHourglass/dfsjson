@@ -190,6 +190,45 @@ class TestJSON(unittest.TestCase):
                     'publicationDate': '12 Oct 1979',
                 },
             }
+        self.assertEqual(dj.loads(t), correct)
+
+    def test_06(self):
+        t = """
+        {
+            "title": "The Hitchhiker's Guide to the Galaxy,
+            "author": "Douglas Adams"
+            "year": 1979,
+            "genre": ["science-fiction", "comedy"]
+            "characters": {
+                "Arthur Dent": "human",
+                "Ford Prefect": "alien",
+                "Zaphod Beeblebrox": "two-headed alien"
+            }
+            "isAudiobook": true
+            "audioBookDuration": "5 hours 45 minutes"
+            "publishingInfo": {
+                "publisher": "Pan Books",
+                "publicationDate": "12 Oct 1979"}
+            """
+
+        correct = \
+            {
+                'title': "The Hitchhiker's Guide to the Galaxy",
+                'author': 'Douglas Adams',
+                'year': 1979,
+                'genre': ['science-fiction', 'comedy'],
+                'characters': {
+                    'Arthur Dent': 'human',
+                    'Ford Prefect': 'alien',
+                    'Zaphod Beeblebrox': 'two-headed alien',
+                },
+                'isAudiobook': True,
+                'audioBookDuration': '5 hours 45 minutes',
+                'publishingInfo': {
+                    'publisher': 'Pan Books',
+                    'publicationDate': '12 Oct 1979',
+                },
+            }
 
         self.assertEqual(dj.loads(t), correct)
 
